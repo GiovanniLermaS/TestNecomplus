@@ -1,0 +1,20 @@
+package com.example.testnecomplus.utils
+
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
+
+const val BASE_URL = "https://ws.audioscrobbler.com/2.0/"
+const val GET_ARTISTS =
+    "?method=geo.gettopartists&country=colombia&format=json&limit=10"
+const val API_KEY = "api_key"
+
+fun hasNetwork(context: Context): Boolean? {
+    var isConnected: Boolean? = false
+    val connectivityManager =
+        context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    val activeNetwork: NetworkInfo? = connectivityManager.activeNetworkInfo
+    if (activeNetwork != null && activeNetwork.isConnected)
+        isConnected = true
+    return isConnected
+}

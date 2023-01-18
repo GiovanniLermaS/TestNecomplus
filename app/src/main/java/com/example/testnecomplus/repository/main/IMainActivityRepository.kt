@@ -1,10 +1,10 @@
 package com.example.testnecomplus.repository.main
 
-import com.example.testnecomplus.model.TopArtists
+import com.example.testnecomplus.model.Data
 
 interface IMainActivityRepository {
     fun getTopArtists(
-        response: (TopArtists) -> Unit,
+        response: (Data) -> Unit,
         error: (String?) -> Unit
     )
 }

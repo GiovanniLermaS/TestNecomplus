@@ -4,12 +4,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.testnecomplus.R
 import com.example.testnecomplus.databinding.ViewArtistsBinding
-import com.example.testnecomplus.model.TopArtists
+import com.example.testnecomplus.model.Artist
 import com.example.testnecomplus.view.main.interfaces.ClickArtist
 
-class ArtistsAdapter(private val data: TopArtists, private val clickArtist: ClickArtist) :
+class ArtistsAdapter(private val artists: ArrayList<Artist>, private val clickArtist: ClickArtist) :
     RecyclerView.Adapter<ArtistsAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -23,8 +24,12 @@ class ArtistsAdapter(private val data: TopArtists, private val clickArtist: Clic
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
+        val artist = artists[position]
+        Glide.with(holder.itemView)
+            .load(artist.image)
+            .into(holder.binding.ivImage)
+        holder.binding.tvName.text = artist.name
     }
 
-    override fun getItemCount() = data.artists.size
+    override fun getItemCount() = artists.size
 }

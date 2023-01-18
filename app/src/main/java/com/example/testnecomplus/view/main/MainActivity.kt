@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.testnecomplus.databinding.ActivityMainBinding
 import com.example.testnecomplus.model.Artist
+import com.example.testnecomplus.view.main.adapter.ArtistsAdapter
 import com.example.testnecomplus.view.main.interfaces.ClickArtist
 import com.example.testnecomplus.viewmodel.MainActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity(), ClickArtist {
         setContentView(binding?.root)
         homeActivityViewModel.data.observe(this) {
             progress.dismiss()
+            binding?.rvArtists?.adapter = ArtistsAdapter(it, this)
         }
         homeActivityViewModel.error.observe(this) {
             progress.dismiss()

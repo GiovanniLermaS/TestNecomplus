@@ -20,7 +20,7 @@ class MainActivityViewModel @Inject constructor(private val mainActivityReposito
 
     fun getTopArtists() {
         mainActivityRepository.getTopArtists({
-            _topArtists.postValue(it.artists)
+            _topArtists.postValue(it.topArtists.artists)
         }, {
             _error.postValue(it)
         })

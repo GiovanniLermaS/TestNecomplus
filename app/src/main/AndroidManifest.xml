@@ -15,8 +15,13 @@
         android:theme="@style/Theme.TestNecomplus"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".view.detail.DetailActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".view.main.MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

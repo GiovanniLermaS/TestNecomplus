@@ -2,7 +2,7 @@ package com.example.testnecomplus.model
 
 import com.google.gson.annotations.SerializedName
 
-class Artist {
+open class Artist {
     @SerializedName("name")
     val name: String? = null
 

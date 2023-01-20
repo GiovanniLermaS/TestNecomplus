@@ -2,7 +2,7 @@ package com.example.testnecomplus.model
 
 import com.google.gson.annotations.SerializedName
 
-class TopArtists {
-    @SerializedName("artist")
-    val artists = ArrayList<Artist>()
+class TopTracks {
+    @SerializedName("track")
+    val track = ArrayList<Track>()
 }

@@ -1,17 +1,19 @@
 package com.example.testnecomplus.view.main
 
 import android.app.ProgressDialog
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.testnecomplus.databinding.ActivityMainBinding
 import com.example.testnecomplus.model.Artist
+import com.example.testnecomplus.utils.ARTIST_NAME
+import com.example.testnecomplus.view.detail.DetailActivity
 import com.example.testnecomplus.view.main.adapter.ArtistsAdapter
 import com.example.testnecomplus.view.main.interfaces.ClickArtist
 import com.example.testnecomplus.viewmodel.MainActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint
-
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), ClickArtist {
@@ -27,7 +29,7 @@ class MainActivity : AppCompatActivity(), ClickArtist {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding?.root)
-        homeActivityViewModel.data.observe(this) {
+        homeActivityViewModel.topArtists.observe(this) {
             progress.dismiss()
             binding?.rvArtists?.adapter = ArtistsAdapter(it, this)
         }
@@ -39,6 +41,8 @@ class MainActivity : AppCompatActivity(), ClickArtist {
     }
 
     override fun onArtistSelected(artist: Artist) {
-
+        val intent = Intent(this, DetailActivity::class.java)
+        intent.putExtra(ARTIST_NAME, artist.name)
+        startActivity(intent)
     }
 }

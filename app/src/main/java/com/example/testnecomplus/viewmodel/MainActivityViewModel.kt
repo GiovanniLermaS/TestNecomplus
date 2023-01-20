@@ -13,7 +13,7 @@ class MainActivityViewModel @Inject constructor(private val mainActivityReposito
     ViewModel() {
 
     private val _topArtists = MutableLiveData<ArrayList<Artist>>()
-    val data: LiveData<ArrayList<Artist>> = _topArtists
+    val topArtists: LiveData<ArrayList<Artist>> = _topArtists
 
     private val _error = MutableLiveData<String>()
     val error: LiveData<String> = _error
